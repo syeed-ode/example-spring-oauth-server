@@ -1,4 +1,4 @@
-package com.example.auth.user;
+package com.syeedode.auth.user;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

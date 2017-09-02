@@ -12,12 +12,18 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body ng-app="app" ng-controller="home as home">
-    <h1>User</h1>
     <div class="container" ng-show="!home.authenticated">
-        Login with: <a href="/login">Facebook</a>
-    </div>
+    <h1>Login</h1>
+            <div>
+                With Facebook: <a href="/login/facebook">click here</a>
+            </div>
+            <div>
+                With GitHub: <a href="/login/github">click here</a>
+            </div>
+        </div>
     <div class="container" ng-show="home.authenticated">
-        Logged in as: <span ng-bind="home.user"></span>
+    <h1>User</h1>
+    Logged in as: <span ng-bind="home.user"></span>
         <div>
             <button ng-click="home.logout()" class="btn bnt-primary">Logout</button>
         </div>
