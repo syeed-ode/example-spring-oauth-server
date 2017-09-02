@@ -18,6 +18,9 @@
     </div>
     <div class="container" ng-show="home.authenticated">
         Logged in as: <span ng-bind="home.user"></span>
+        <div>
+            <button ng-click="home.logout()" class="btn bnt-primary">Logout</button>
+        </div>
     </div>
 
     <script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
@@ -29,11 +32,20 @@
                         .success( function(data) {
                                self.user = data.userAuthentication.details.name;
                                self.authenticated = true;
-                        })
-                        .error( function() {
+                        }).error( function() {
                             self.authenticated = false;
                             self.user = "N/A";
                         });
+                    self.logout = function () {
+                        $http.post('/logout', {})
+                            .success(function(){
+                                self.authenticated = false;
+                                $location.path("/");
+                            }).error(function (data) {
+                                console.log("Logout failed")
+                                self.authenticated = false;
+                            });
+                    };
                });
     </script>
 </body>
